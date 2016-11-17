@@ -1,1 +1,1 @@
-# hugo_site for rustybear.com
+# hugo site for rustybear.com
