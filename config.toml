@@ -1,4 +1,4 @@
-baseurl = "https://blog.rustybear.com"
+baseurl = "blog.rustybear.com"
 title = "Rustybear"
 theme = "hugo-universal-theme"
 languageCode = "en-us"
