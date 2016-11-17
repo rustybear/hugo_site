@@ -1,4 +1,4 @@
-baseurl = "blog.rustybear.com"
+baseurl = "http://blog.rustybear.com"
 title = "Rustybear"
 theme = "hugo-universal-theme"
 languageCode = "en-us"
@@ -32,17 +32,15 @@ paginate = 10
     # Enable the contact form by entering your Formspree.io email
     email = "kevin@rustybear.com"
 
-    about_us = "<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>"
-    copyright = "Copyright (c) 2015 - 2016, YourCompany; all rights reserved."
+    about_us = "<p>Pellentesque habitant morbidtristique senectus et netus et malesuada fames ac turpis egestas.</p>"
+    copyright = "Copyright (c) 2016, Russtybear; all rights reserved."
     date_format = "2006-01-02"
     logo = "img/logo.png"
-    address = """<p><strong>Universal Ltd.</strong>
-        <br>13/25 New Avenue
-        <br>Newtown upon River
-        <br>45Y 73J
-        <br>England
+    address = """<p><strong>Rustybear</strong>
+        <br>400 West 113th Street
+        <br>New York, New York 10025
         <br>
-        <strong>Great Britain</strong>
+        <strong>United States</strong>
       </p>
       """
     latitude = "-41.12"
