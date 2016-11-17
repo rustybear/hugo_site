@@ -35,7 +35,7 @@ paginate = 10
     about_us = "<p>Pellentesque habitant morbidtristique senectus et netus et malesuada fames ac turpis egestas.</p>"
     copyright = "Copyright (c) 2016, Russtybear; all rights reserved."
     date_format = "2006-01-02"
-    logo = "img/logo.png"
+    logo = "img/logo_rustybear.png"
     address = """<p><strong>Rustybear</strong>
         <br>400 West 113th Street
         <br>New York, New York 10025
@@ -43,8 +43,8 @@ paginate = 10
         <strong>United States</strong>
       </p>
       """
-    latitude = "-41.12"
-    longitude = "-73.80"
+    latitude = "40.80432"
+    longitude = "-73.961294"
 
 [Permalinks]
     blog = "/blog/:year/:month/:day/:filename/"
