@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rustybear</title>
+    <title>Golang on Rustybear</title>
     <link>http://blog.rustybear.com/tags/golang/index.xml</link>
-    <description>Recent content on Rustybear</description>
+    <description>Recent content in Golang on Rustybear</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2016, Russtybear; all rights reserved.</copyright>
