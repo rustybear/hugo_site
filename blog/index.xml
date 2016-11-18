@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog-rsses on Rustybear</title>
+    <title>Blogs on Rustybear</title>
     <link>http://blog.rustybear.com/blog/index.xml</link>
-    <description>Recent content in Blog-rsses on Rustybear</description>
+    <description>Recent content in Blogs on Rustybear</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2016, Russtybear; all rights reserved.</copyright>
-    <lastBuildDate>Sat, 10 Oct 2015 13:07:31 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 17 Nov 2016 23:04:43 -0500</lastBuildDate>
     <atom:link href="http://blog.rustybear.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>first post</title>
+      <link>http://blog.rustybear.com/blog/2016/11/17/first-post/</link>
+      <pubDate>Thu, 17 Nov 2016 23:04:43 -0500</pubDate>
+      
+      <guid>http://blog.rustybear.com/blog/2016/11/17/first-post/</guid>
+      <description>
+
+&lt;h3 id=&#34;this-is-markdown&#34;&gt;This is Markdown&lt;/h3&gt;
+
+&lt;p&gt;Next I want to test an image.&lt;/p&gt;
+
+&lt;p&gt;But first a link:  &lt;a href=&#34;http://google.com&#34;&gt;google&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;And now an image:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.rustybear.com/img/logo_rustybear.png&#34; alt=&#34;alt&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The end.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Migrate from Jekyll</title>
