@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pseudo on Rustybear</title>
+    <title>Rustybear</title>
     <link>http://blog.rustybear.com/categories/pseudo/index.xml</link>
-    <description>Recent content in Pseudo on Rustybear</description>
+    <description>Recent content on Rustybear</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2016, Russtybear; all rights reserved.</copyright>

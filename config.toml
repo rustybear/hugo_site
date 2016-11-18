@@ -75,6 +75,12 @@ paginate = 10
     tags = true
     search = true
 
+[params.splash]
+    enable = true
+    # All features are defined in their own files. You can find example items
+    # at 'exampleSite/data/splash'.
+    # For more informtion take a look at the README.
+
 [params.carousel]
     enable = true
     # All carousel items are defined in their own files. You can find example items
