@@ -6,6 +6,7 @@ categories = ["coding"
 date = "2016-11-17T23:04:43-05:00"
 title = "first post"
 banner = "img/banners/banner-5.jpg"
+draft = true
 +++
 
 ### This is Markdown
