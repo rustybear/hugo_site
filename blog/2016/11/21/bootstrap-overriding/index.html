@@ -7,7 +7,7 @@
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Blogs</title>
+  <title>bootstrap overriding</title>
 
   <meta name="author" content="" />
   <meta name="keywords" content="">
@@ -48,9 +48,9 @@
   <link rel="alternate" href="http://blog.rustybear.com/index.xml" type="application/rss+xml" title="Rustybear">
 
   
-  <meta property="og:title" content="Blogs" />
+  <meta property="og:title" content="bootstrap overriding" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog//" />
+  <meta property="og:url" content="/blog/2016/11/21/bootstrap-overriding//" />
   <meta property="og:image" content="img/logo_rustybear_2.png" />
 
 </head>
@@ -69,9 +69,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="http://blog.rustybear.com/">
-                    <img src="http://blog.rustybear.com/img/logo_rustybear_horizontal.png" alt="Blogs logo" class="hidden-xs hidden-sm">
-                    <img src="http://blog.rustybear.com/img/logo_rustybear_horizontal.png" alt="Blogs logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Blogs - go to homepage</span>
+                    <img src="http://blog.rustybear.com/img/logo_rustybear_horizontal.png" alt="bootstrap overriding logo" class="hidden-xs hidden-sm">
+                    <img src="http://blog.rustybear.com/img/logo_rustybear_horizontal.png" alt="bootstrap overriding logo" class="visible-xs visible-sm">
+                    <span class="sr-only">bootstrap overriding - go to homepage</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -132,7 +132,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Blogs</h1>
+                <h1>bootstrap overriding</h1>
             </div>
         </div>
     </div>
@@ -141,59 +141,172 @@
 
         <div id="content">
             <div class="container">
+
                 <div class="row">
+
                     
 
-                    <div class="col-md-9" id="blog-listing-medium">
+                    <div class="col-md-9" id="blog-post">
 
+                        <p class="text-muted text-uppercase mb-small text-right">November 21, 2016</p>
+
+                        <div id="post-content">
+                          <p>How do I override bootstrap.css so that I remove the style for an anchor/class?
+For example, if I want to remove some or all the styling rules for legend:</p>
+
+<pre><code>legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 20px;
+  font-size: 21px;
+  line-height: inherit;
+  color: #333333;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+</code></pre>
+
+<p>Would you use <code>!important</code> like this:</p>
+
+<pre><code>legend {
+  display: inherit !important;
+  width: 100%;
+  padding: 0;
+  margin-bottom: inherit !important;
+  font-size: 21px;
+  line-height: inherit;
+  color: inherit !important;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+</code></pre>
+
+<p>Using <code>!important</code> is not a good option, as you will most likely want to
+override your own styles in the future. That leaves us with CSS priorities.</p>
+
+<p>Basically, every selector has its own numerical &lsquo;weight&rsquo;:</p>
+
+<pre><code>100 points for IDs
+10 points for classes and pseudo-classes
+1 point for tag selectors and pseudo-elements
+</code></pre>
+
+<p>Among two selector styles browser will always choose the one with more weight.
+Order of your stylesheets only matters when priorities are even - that&rsquo;s why
+it is not easy to override Bootstrap.</p>
+
+<p>Your option is to inspect Bootstrap sources, find out how exactly some
+specific style is defined, and copy that selector so your element has equal
+priority. But we kinda loose all Bootstrap sweetness in the process.</p>
+
+<p>The easiest way to overcome this is to assign additional arbitrary ID to one
+of the root elements on your page, like this: <body id="bootstrap-overrides"></p>
+
+<p>This way, you can just prefix any CSS selector with your ID, instantly adding
+100 points of weight to the element, and overriding Bootstrap definition:</p>
+
+<pre><code>/* Example selector defined in Bootstrap */
+.jumbotron h1 { /* 10+1=11 priority scores */
+  line-height: 1;
+  color: inherit;
+}
+
+/* Your initial take at styling */
+h1 { /* 1 priority score, not enough to override Bootstrap jumbotron definition */
+  line-height: 1;
+  color: inherit;
+}
+
+/* New way of prioritization */
+#bootstrap-overrides h1 { /* 100+1=101 priority score, yay! */
+  line-height: 1;
+  color: inherit;
+}
+</code></pre>
+
+<p>Since IDs can only be used once, why not make #bootstrap-overrides a class?</p>
+
+<p>Because you would end up having to calculate better. if it were a class in this
+example it would be prio 11 and if the css definition would be after the
+bootstrap.css then we would be good to go. However this would be pretty close
+and setting it as an id which boosts the prio big time, we don&rsquo;t have to worry
+about calculating prio and testing as hard whether we have it always right.
+easier with an id if you want to definitively overwrite the default.Other things to remember:</p>
+
+<p>In the head section of your html place your custom.css below bootstrap.css.</p>
+
+<p>Other things to remember:</p>
+
+<pre><code>&lt;link href=&quot;bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link href=&quot;custom.css&quot; rel=&quot;stylesheet&quot;&gt;
+</code></pre>
+
+<p>Then in custom.css you have to use the exact same selector for the element you
+want to override. In the case of <code>legend</code> it just stays <code>legend</code> in
+your custom.css because bootstrap hasn&rsquo;t got any selectors more specific.</p>
+
+<pre><code>legend {
+  display: inline;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  font-size: medium;
+  line-height: normal;
+  color: #000000;
+  border: 0;
+  border-bottom: none;
+}
+</code></pre>
+
+<p>But in case of <code>h1</code> for example you have to take care of the more specific selectors like <code>.jumbotron h1</code> because</p>
+
+<pre><code>h1 {
+  line-height: 2;
+  color: #f00;
+}
+</code></pre>
+
+<p>will not override</p>
+
+<pre><code>.jumbotron h1,
+.jumbotron .h1 {
+  line-height: 1;
+  color: inherit;
+}
+</code></pre>
+
+<p>Here are some best practices to follow :</p>
+
+<ul>
+<li>Always load custom css after base css file (not responsive).</li>
+<li>Avoid using <code>!important</code> if possible. That can override some important stylings from base.</li>
+<li>Always load bootstrap-responsive.css after custom.css if you don&rsquo;t want to lose media queries.</li>
+<li>Prefer modifying required properties (not all)</li>
+</ul>
+
+                        </div>
                         
                         
-                        <section class="post">
-                            <div class="row">
-                                <div class="col-md-4">
-                                  <div class="image">
-                                      <a href="http://blog.rustybear.com/blog/2016/11/21/bootstrap-overriding/">
-                                          
-                                          <img src="http://blog.rustybear.com/img/banners/bootstrap-html5-css3.png" class="img-responsive" alt="">
-                                          
-                                      </a>
-                                  </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h2><a href="http://blog.rustybear.com/blog/2016/11/21/bootstrap-overriding/">bootstrap overriding</a></h2>
-                                    <div class="clearfix">
-                                        <p class="author-category">
-                                          
-                                          
-                                          
-                                          in <a href="http://blog.rustybear.com/categories/coding">coding</a>
-                                          
-                                          
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'rustybear';
+    var disqus_identifier = 'http:\/\/blog.rustybear.com\/blog\/2016\/11\/21\/bootstrap-overriding\/';
+    var disqus_title = 'bootstrap overriding';
+    var disqus_url = 'http:\/\/blog.rustybear.com\/blog\/2016\/11\/21\/bootstrap-overriding\/';
 
-                                        </p>
-                                        <p class="date-comments">
-                                            <a href="http://blog.rustybear.com/blog/2016/11/21/bootstrap-overriding/"><i class="fa fa-calendar-o"></i> November 21, 2016</a>
-                                        </p>
-                                    </div>
-                                    <p class="intro">How do I override bootstrap.css so that I remove the style for an anchor/class? For example, if I want to remove some or all the styling rules for legend:
-legend { display: block; width: 100%; padding: 0; margin-bottom: 20px; font-size: 21px; line-height: inherit; color: #333333; border: 0; border-bottom: 1px solid #e5e5e5; }  Would you use !important like this:
-legend { display: inherit !important; width: 100%; padding: 0; margin-bottom: inherit !</p>
-                                    <p class="read-more"><a href="http://blog.rustybear.com/blog/2016/11/21/bootstrap-overriding/" class="btn btn-template-main">Continue reading</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
                         
 
-                        <ul class="pager">
-                            
-                            <li class="previous disabled"><a href="#">&larr; Newer</a></li>
-                            
-
-                            
-                            <li class="next disabled"><a href="#">Older &rarr;</a></li>
-                            
-                        </ul>
                     </div>
                     
 
@@ -287,6 +400,7 @@ legend { display: inherit !important; width: 100%; padding: 0; margin-bottom: in
 
                 </div>
                 
+
             </div>
             
         </div>
