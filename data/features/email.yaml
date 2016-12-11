@@ -1,7 +1,0 @@
-weight: 4
-name: "Email"
-icon: "fa fa-envelope-o"
-description: "I build you your own email server and email discussion lists,
-complete with spam filtering, from the ground up so you have complete
-control and independence. Or I can hook you into exisiting, established
-email services such as Amazon SES or Google G-Suite."

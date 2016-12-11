@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rustybear</title>
+    <link>http://www.rustybear.com/index.xml</link>
+    <description>Recent content on Rustybear</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2016 - Rustybear - all rights reserved.</copyright>
+    <lastBuildDate>Mon, 21 Nov 2016 12:40:07 -0500</lastBuildDate>
+    <atom:link href="http://www.rustybear.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>bootstrap overriding</title>
+      <link>http://www.rustybear.com/blog/2016/11/21/bootstrap-overriding/</link>
+      <pubDate>Mon, 21 Nov 2016 12:40:07 -0500</pubDate>
+      
+      <guid>http://www.rustybear.com/blog/2016/11/21/bootstrap-overriding/</guid>
+      <description>&lt;p&gt;How do I override bootstrap.css so that I remove the style for an anchor/class?
+For example, if I want to remove some or all the styling rules for legend:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 20px;
+  font-size: 21px;
+  line-height: inherit;
+  color: #333333;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Would you use &lt;code&gt;!important&lt;/code&gt; like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;legend {
+  display: inherit !important;
+  width: 100%;
+  padding: 0;
+  margin-bottom: inherit !important;
+  font-size: 21px;
+  line-height: inherit;
+  color: inherit !important;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Using &lt;code&gt;!important&lt;/code&gt; is not a good option, as you will most likely want to
+override your own styles in the future. That leaves us with CSS priorities.&lt;/p&gt;
+
+&lt;p&gt;Basically, every selector has its own numerical &amp;lsquo;weight&amp;rsquo;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;100 points for IDs
+10 points for classes and pseudo-classes
+1 point for tag selectors and pseudo-elements
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Among two selector styles browser will always choose the one with more weight.
+Order of your stylesheets only matters when priorities are even - that&amp;rsquo;s why
+it is not easy to override Bootstrap.&lt;/p&gt;
+
+&lt;p&gt;Your option is to inspect Bootstrap sources, find out how exactly some
+specific style is defined, and copy that selector so your element has equal
+priority. But we kinda loose all Bootstrap sweetness in the process.&lt;/p&gt;
+
+&lt;p&gt;The easiest way to overcome this is to assign additional arbitrary ID to one
+of the root elements on your page, like this: &lt;body id=&#34;bootstrap-overrides&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;This way, you can just prefix any CSS selector with your ID, instantly adding
+100 points of weight to the element, and overriding Bootstrap definition:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/* Example selector defined in Bootstrap */
+.jumbotron h1 { /* 10+1=11 priority scores */
+  line-height: 1;
+  color: inherit;
+}
+
+/* Your initial take at styling */
+h1 { /* 1 priority score, not enough to override Bootstrap jumbotron definition */
+  line-height: 1;
+  color: inherit;
+}
+
+/* New way of prioritization */
+#bootstrap-overrides h1 { /* 100+1=101 priority score, yay! */
+  line-height: 1;
+  color: inherit;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Since IDs can only be used once, why not make #bootstrap-overrides a class?&lt;/p&gt;
+
+&lt;p&gt;Because you would end up having to calculate better. if it were a class in this
+example it would be prio 11 and if the css definition would be after the
+bootstrap.css then we would be good to go. However this would be pretty close
+and setting it as an id which boosts the prio big time, we don&amp;rsquo;t have to worry
+about calculating prio and testing as hard whether we have it always right.
+easier with an id if you want to definitively overwrite the default.Other things to remember:&lt;/p&gt;
+
+&lt;p&gt;In the head section of your html place your custom.css below bootstrap.css.&lt;/p&gt;
+
+&lt;p&gt;Other things to remember:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;link href=&amp;quot;bootstrap.min.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt;
+&amp;lt;link href=&amp;quot;custom.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then in custom.css you have to use the exact same selector for the element you
+want to override. In the case of &lt;code&gt;legend&lt;/code&gt; it just stays &lt;code&gt;legend&lt;/code&gt; in
+your custom.css because bootstrap hasn&amp;rsquo;t got any selectors more specific.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;legend {
+  display: inline;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  font-size: medium;
+  line-height: normal;
+  color: #000000;
+  border: 0;
+  border-bottom: none;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;But in case of &lt;code&gt;h1&lt;/code&gt; for example you have to take care of the more specific selectors like &lt;code&gt;.jumbotron h1&lt;/code&gt; because&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;h1 {
+  line-height: 2;
+  color: #f00;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;will not override&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;.jumbotron h1,
+.jumbotron .h1 {
+  line-height: 1;
+  color: inherit;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here are some best practices to follow :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Always load custom css after base css file (not responsive).&lt;/li&gt;
+&lt;li&gt;Avoid using &lt;code&gt;!important&lt;/code&gt; if possible. That can override some important stylings from base.&lt;/li&gt;
+&lt;li&gt;Always load bootstrap-responsive.css after custom.css if you don&amp;rsquo;t want to lose media queries.&lt;/li&gt;
+&lt;li&gt;Prefer modifying required properties (not all)&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>http://www.rustybear.com/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.rustybear.com/contact/</guid>
+      <description>
+
+&lt;h2 id=&#34;here-to-help-you&#34;&gt;Here To Help You&lt;/h2&gt;
+
+&lt;p&gt;Please feel free to make contact with any kind of question or concern.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
