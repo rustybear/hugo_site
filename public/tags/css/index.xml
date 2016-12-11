@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Css on Rustybear</title>
-    <link>http://rustybear.com/tags/css/index.xml</link>
+    <link>http://www.rustybear.com/tags/css/index.xml</link>
     <description>Recent content in Css on Rustybear</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2016 - Rustybear - all rights reserved.</copyright>
-    <atom:link href="http://rustybear.com/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.rustybear.com/tags/css/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>bootstrap overriding</title>
-      <link>http://rustybear.com/blog/2016/11/21/bootstrap-overriding/</link>
+      <link>http://www.rustybear.com/blog/2016/11/21/bootstrap-overriding/</link>
       <pubDate>Mon, 21 Nov 2016 12:40:07 -0500</pubDate>
       
-      <guid>http://rustybear.com/blog/2016/11/21/bootstrap-overriding/</guid>
+      <guid>http://www.rustybear.com/blog/2016/11/21/bootstrap-overriding/</guid>
       <description>&lt;p&gt;How do I override bootstrap.css so that I remove the style for an anchor/class?
 For example, if I want to remove some or all the styling rules for legend:&lt;/p&gt;
 

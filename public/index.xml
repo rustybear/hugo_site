@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rustybear</title>
-    <link>http://rustybear.com/index.xml</link>
+    <link>http://www.rustybear.com/index.xml</link>
     <description>Recent content on Rustybear</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2016 - Rustybear - all rights reserved.</copyright>
     <lastBuildDate>Mon, 21 Nov 2016 12:40:07 -0500</lastBuildDate>
-    <atom:link href="http://rustybear.com/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.rustybear.com/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>bootstrap overriding</title>
-      <link>http://rustybear.com/blog/2016/11/21/bootstrap-overriding/</link>
+      <link>http://www.rustybear.com/blog/2016/11/21/bootstrap-overriding/</link>
       <pubDate>Mon, 21 Nov 2016 12:40:07 -0500</pubDate>
       
-      <guid>http://rustybear.com/blog/2016/11/21/bootstrap-overriding/</guid>
+      <guid>http://www.rustybear.com/blog/2016/11/21/bootstrap-overriding/</guid>
       <description>&lt;p&gt;How do I override bootstrap.css so that I remove the style for an anchor/class?
 For example, if I want to remove some or all the styling rules for legend:&lt;/p&gt;
 
@@ -154,10 +154,10 @@ your custom.css because bootstrap hasn&amp;rsquo;t got any selectors more specif
     
     <item>
       <title>Contact</title>
-      <link>http://rustybear.com/contact/</link>
+      <link>http://www.rustybear.com/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://rustybear.com/contact/</guid>
+      <guid>http://www.rustybear.com/contact/</guid>
       <description>
 
 &lt;h2 id=&#34;here-to-help-you&#34;&gt;Here To Help You&lt;/h2&gt;
