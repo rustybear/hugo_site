@@ -2,17 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://blog.rustybear.com/</loc>
+    <loc>http://rustybear.com/</loc>
     <lastmod>2016-11-21T12:40:07-05:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.rustybear.com/blog/2016/11/21/bootstrap-overriding/</loc>
+    <loc>http://rustybear.com/blog/2016/11/21/bootstrap-overriding/</loc>
     <lastmod>2016-11-21T12:40:07-05:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.rustybear.com/contact/</loc>
+    <loc>http://rustybear.com/contact/</loc>
   </url>
   
 </urlset>
